@@ -1,0 +1,21 @@
+{
+  "name": "Xenx-ERP Web",
+  "description": "Sistema de administración y finanzas",
+  "version": "1.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "16": "icon/i16.png",
+	"24": "icon/i24.png",
+	"32": "icon/i32.png",
+	"48": "icon/i48.png",
+	"64": "icon/i64.png",
+	"128": "icon/i128.png"
+  },
+  "permissions": [
+    "tabs", "http://*/*"
+  ]
+}
