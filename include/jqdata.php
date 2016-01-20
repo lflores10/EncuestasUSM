@@ -48,20 +48,21 @@ switch($mod){
 			$data["data"][]=array_map("utf8_encode",$row);			
 		}
 	echo json_encode($data);
-	break;_encode($data);
 	break;
 	case "get_cuestionarios_alumnos":
 		$data[response]="OK";
-		$sql="SELECT Codigo_Cuestionario,Codigo_Asignatura FROM encuesta.tbcuestionario3 where Codigo_Asignatura in (SELECT Codigo_Asignaturas FROM encuesta.tbalumasig where Codigo_Alumnos = ".$alumnos." and Periodo_Alumno = ".$periodo.")";
-
+		$sql="SELECT Codigo_Cuestionario,Codigo_Asignatura FROM encuesta.tbcuestionario3 where Codigo_Asignatura in (SELECT Codigo_Asignaturas FROM encuesta.tbalumasig where Codigo_Alumnos = ".$alumnos." and Periodo_Alumno = ".$periodo.");";
 		$result = $mysqli->query($sql);
 		$data["count"]=$result->num_rows;
 		while($row=$result->fetch_array(MYSQLI_ASSOC)){
-			$data["data"][]=array_map("utf8_encode",$row);			
+			$sql1="SELECT * FROM encuesta.tbcuestionario where Codigo_Cuestionario = ".$row['Codigo_Cuestionario'].";";
+			$result1 = $mysqli->query($sql1);
+			while($row1=$result1->fetch_array(MYSQLI_ASSOC)){		
+				$data["data"][]=array_map("utf8_encode",$row1);
+			}
 		}
 	echo json_encode($data);
 	break;
-
-
 }
 ?>
+ 
